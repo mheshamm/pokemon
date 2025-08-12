@@ -6,8 +6,6 @@ import {
 import { PokemonListItem } from "../models/pokemon-list.interface";
 import { PokemonDetails } from "../models/pokemon-details.interface";
 import { createEntityAdapter, EntityState } from "@reduxjs/toolkit";
-import { store } from "../../../store/store";
-import { setRequestMeta } from "../slices/pokemon-slice";
 
 export const pokemonListAdapter = createEntityAdapter<PokemonListItem, string>({
   selectId: (pokemon) => pokemon.name,
@@ -35,13 +33,6 @@ export const pokemonApi = createApi({
         meta,
         arg
       ) => {
-        // store.dispatch(
-        //   setRequestMeta({
-        //     count: responseData.count,
-        //     next: responseData.next,
-        //     previous: responseData.previous,
-        //   })
-        // );
         return pokemonListAdapter.setAll(
           initialPokemonListState,
           responseData.results

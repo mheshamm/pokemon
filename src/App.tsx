@@ -6,6 +6,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import PokemonList from "./features/pokemon/components/PokemonList";
 import PokemonLayout from "./features/pokemon/components/PokemonLayout";
 import PokemonListCard from "./features/pokemon/components/ItemCard";
+import PokemonDetailsCard from "./features/pokemon/components/ItemDetailsCard";
 
 export default function App() {
   return (
@@ -14,7 +15,7 @@ export default function App() {
       <Route path="/pokemon" element={<PokemonLayout />}>
         <Route
           path=":item"
-          element={<PokemonListCard item={{ name: "SSSSSSSS", url: "DAS" }} />}
+          element={<PokemonDetailsCard/>}
         />
       </Route>
     </Routes>
