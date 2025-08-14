@@ -1,4 +1,6 @@
+import { render, screen } from "@testing-library/react";
 import { vi } from "vitest";
+import PokemonDetailsCard from "../ItemDetailsCard";
 
 
 // ------------------------- START MOCKING ------------
@@ -26,3 +28,34 @@ vi.mock("../../../shared/components/LoadingSpinnet", () => ({
 
 // ------------------------- END MOCKING ------------
 
+// ------------------------- START TESTING ------------
+// test get params from router & call the hook of getting data & show the loading whlie fetching is true
+describe("PokemonDetailsCard", () => {
+  const mockUseParams = vi.mocked(
+    require("react-router-dom").useParams,
+    { partial: true }
+  );
+  const mockUseGetPokemonDetailsQuery = vi.mocked(
+    require("../api/pokemon-api-slice").useGetPokemonDetailsQuery,
+    { partial: true }
+  );
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("renders loading spinner when fetching", () => {
+    mockUseParams.mockReturnValue({ item: "bulbasaur" });
+    mockUseGetPokemonDetailsQuery.mockReturnValue({
+      data: undefined,
+      error: undefined,
+      isLoading: false,
+      isFetching: true,
+    });
+
+    render(<PokemonDetailsCard />);
+    expect(screen.getByTestId("loading-spinner")).toBeInTheDocument();
+  });
+
+  
+});
