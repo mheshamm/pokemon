@@ -25,6 +25,6 @@ Tests written in Vitest and React Testing Library.
 npm install
 
 
-## 🚀 NOTE : I will add .env to file to repo and not add it to gitigone
+## 🚀 NOTE : I will add .env to file to repo and not add it to gitignore
 
 ## 🚀 NOTE : i have done a very simple design using css because styling in task not specified so i used css to be easy and quick
