@@ -43,7 +43,7 @@ describe("PokemonDetailsCard", () => {
   });
 
   it("renders loading spinner when fetching", () => {
-    mockUseParams.mockReturnValue({ item: "bulbasaur" });
+    mockUseParams.mockReturnValue({ item: "mohamed" });
     mockUseGetPokemonDetailsQuery.mockReturnValue({
       data: undefined,
       error: undefined,
@@ -55,5 +55,31 @@ describe("PokemonDetailsCard", () => {
     expect(screen.getByTestId("loading-spinner")).toBeInTheDocument();
   });
 
+  // render data
+
+  it("render details data whne we retireive the data success", () => {
+    mockUseParams.mockReturnValue({ item: "mohamed" });
+    mockUseGetPokemonDetailsQuery.mockReturnValue({
+      data: {
+        name: "mohamed",
+        height: 7,
+        weight: 69,
+        sprites: { front_default: "http://example.com/mohamed.png" },
+      },
+      error: undefined,
+      isLoading: false,
+      isFetching: false,
+    });
+
+    render(<PokemonDetailsCard />);
+    expect(screen.getAllByText("mohamed")).toHaveLength(2);
+
+    expect(screen.getByAltText("mohamed")).toHaveAttribute(
+      "src",
+      "http://example.com/mohamed.png"
+    );
+    expect(screen.getByText("Height")).toBeInTheDocument();
+    expect(screen.getByText("Weight")).toBeInTheDocument();
+  });
   
 });
