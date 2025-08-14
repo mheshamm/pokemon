@@ -18,18 +18,19 @@ Tests written in Vitest and React Testing Library.
 - **PokéAPI** as the data source
 
 ---
-src/
-  features/
-    pokemon/
-      api/                  # API slice (RTK Query)
-      components/           # UI components
-        test/               # Component tests
-      models/               # TS interfaces
-      slices/               # Redux slices
-  shared/
-    components/             # Shared UI (LoadingSpinner, etc.)
-store/                      # Redux store setup
 
+## 📂 Project Structure
+## src/
+##   features/
+##      pokemon/
+##          api/ # API slice (RTK Query)
+##          components/ # UI components
+##          test/ # Component tests
+##          models/ # TS interfaces
+##          slices/ # Redux slices
+##   shared/
+##      components/ # Shared UI (LoadingSpinner, etc.)
+## store/ # Redux store setup
 -- 
 
 ## 🚀 Getting Started
