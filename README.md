@@ -38,6 +38,12 @@ Tests written in Vitest and React Testing Library.
 ### 1️⃣ Install dependencies
 npm install
 
+### 2 Run 
+npm run dev
+
+### 3 TEST 
+npm run test
+
 
 ## 🚀 NOTE : I will add .env to file to repo and not add it to gitignore
 
