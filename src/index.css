@@ -128,7 +128,7 @@ a {
   border: 0;
 }
 
-.loading-container-wrapper{
+.loading-container-wrapper {
   position: relative;
 }
 
@@ -140,28 +140,118 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: 8888;
 }
 
 
 
 
 .loader {
-    width: 48px;
-    height: 48px;
-    border: 5px solid #FFF;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-    }
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
 
-    @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-    } 
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.pagination-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #6b7280;
+  background: transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  min-width: 32px;
+}
+
+.pagination-btn:hover {
+  background: rgb(0, 140, 255);
+  ;
+  color: #fff;
+}
+
+.pagination-btn.active {
+  background: rgb(0, 140, 255);
+  ;
+  color: #fff;
+}
+
+.pagination-btn.disabled {
+  cursor: not-allowed;
+  color: #d1d5db;
+  /* gray-300 */
+  background: transparent !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .pagination-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+}
+
+.pokemon-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 70px);
+  /* Full viewport height */
+  padding: 1rem 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.pokemon-list {
+  flex: 1;
+  /* take remaining space */
+  overflow-y: auto;
+  /* scroll list if long */
+  list-style: none;
+  width: 100%;
+}
+
+.pagination-wrapper {
+  margin-top: auto;
+  /* push pagination to bottom */
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+  /* subtle top border */
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  /* keep it visible */
+}

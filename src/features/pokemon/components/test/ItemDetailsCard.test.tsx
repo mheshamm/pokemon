@@ -81,5 +81,4 @@ describe("PokemonDetailsCard", () => {
     expect(screen.getByText("Height")).toBeInTheDocument();
     expect(screen.getByText("Weight")).toBeInTheDocument();
   });
-  
 });

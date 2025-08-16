@@ -1,3 +1,5 @@
+import { EntityId, EntityState } from "@reduxjs/toolkit";
+
 export interface Pagination {
   count: number;
   next?: string | null;
@@ -11,4 +13,9 @@ export interface PaginationResponse<T> extends Pagination {
 export interface PaginationPayload {
   limit?: number;
   offset?: number;
+}
+
+export interface EntityWithCount<T, key extends EntityId> {
+  data: EntityState<T, key>;
+  count : number
 }
