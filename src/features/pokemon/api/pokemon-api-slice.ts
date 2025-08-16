@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi } from "@reduxjs/toolkit/query/react";
 import {
   PaginationPayload,
   PaginationResponse,
@@ -6,6 +6,7 @@ import {
 import { PokemonListItem } from "../models/pokemon-list.interface";
 import { PokemonDetails } from "../models/pokemon-details.interface";
 import { createEntityAdapter, EntityState } from "@reduxjs/toolkit";
+import { baseQueryWithErrorHandling } from "../../../store/api/baseQuery";
 
 export const pokemonListAdapter = createEntityAdapter<PokemonListItem, string>({
   selectId: (pokemon) => pokemon.name,
@@ -17,7 +18,7 @@ export const initialPokemonListState: EntityState<PokemonListItem, string> =
 
 export const pokemonApi = createApi({
   reducerPath: "pokemonApi",
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_API_URL }),
+  baseQuery: baseQueryWithErrorHandling,
   endpoints: (builder) => ({
     getPokemonList: builder.query<
       EntityState<PokemonListItem, string>,
@@ -38,9 +39,11 @@ export const pokemonApi = createApi({
           responseData.results
         );
       },
+      
     }),
     getPokemonDetails: builder.query<PokemonDetails, string>({
       query: (id) => `/pokemon/${id}`,
+      
     }),
   }),
 });
